@@ -2,21 +2,71 @@ from urllib import response
 from bs4 import BeautifulSoup
 import requests
 import sqlite3
+import re
+import time
+from requests_html import HTMLSession
 
 ### IEX TRADING API METHODS ###
-DINING_WEB = "https://dining.brown.edu"
+DINING_WEB = "https://dining.brown.edu/cafe/"
+
+day_codes = {
+    "Mon" : "1",
+    "Tue" : "2",
+    "Wed" : "3",
+    "Thu" : "4",
+    "Fri" : "5",
+    "Sat" : "6",
+    "Sun" : "0"
+}
+
+def has_row(tag):
+    return tag.startswith("row ")
 
 
+def scrape_menu(dining_hall : str, weekday: str) -> list:
+    #Use BeautifulSoup and requests to collect data required for the assignment.
+    req = requests.get(DINING_WEB + dining_hall + "/", verify=False)
+    dining_html = req.text
+    dining_soup = BeautifulSoup(dining_html, 'html.parser')
+    menu_element = dining_soup.find("a", class_='hidden-small')
+    menu_link = menu_element.get('href')
+    print(menu_link)
+    req2 = requests.get(menu_link)
+    time.sleep(2)
+    menu_html = req2.text
+    menu_soup = BeautifulSoup(menu_html, 'html.parser')
+    print(menu_soupgit )
 
-#Use BeautifulSoup and requests to collect data required for the assignment.
-req = requests.get(DINING_WEB)
-dining_html = req.text
-dining_soup = BeautifulSoup(dining_html, 'html.parser')
-menu_element = dining_soup.find("a", class_='hidden-small').find_all("tr")
-menu_link = menu_element.get('href')
 
-req2 = requests.get(menu_link)
-menu_html = 
+    day_code = day_codes[weekday]
+    #print(menu_soup)
+    day_items = menu_soup.find_all(class_="day cell_menu_item", id=lambda x: x and x.endswith(day_code), recursive=True)
+    print(day_items)
+    init_menu_list = []
+    menu_dict = {}
+    for day_item in day_items:
+        #station = row.find(class_="stationname").text
+        print(day_item)
+        menu_items = day_item.find_all(class_="menu-item-description")
+        #menu_items = [s.find(class_="menu-item-description") for s in day_items.find_all(class_="menu-item")]
+        for menu_item in menu_items:
+            #print(menu_item)
+            menu_dict = {
+                "Menu item": menu_item.find(class_="weelydesc").text,
+                #"Station": station,
+                "Description": menu_item.find(class_="collapsed").text if menu_item.find(class_="collapsed") is not None else "",
+                "Day Part": menu_item.find(class_="daypart-abbr").text
+            }
+            
+            icons = menu_item.find_all(class_="menu-cor-icon")
+            menu_dict["Dietary restictions"] = [d.get('alt') for d in icons]
+            init_menu_list.append(menu_dict)
+    return init_menu_list
+
+
+print(scrape_menu("andrews-commons", "Fri"))
+    
+
 
 
 '''
