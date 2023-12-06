@@ -4,7 +4,7 @@ import requests
 import sqlite3
 import re
 import time
-from requests_html import HTMLSession
+#from requests_html import HTMLSession
 
 ### IEX TRADING API METHODS ###
 DINING_WEB = "https://dining.brown.edu/cafe/"
@@ -35,7 +35,7 @@ def scrape_menu(dining_hall : str, weekday: str) -> list:
     time.sleep(2)
     menu_html = req2.text
     menu_soup = BeautifulSoup(menu_html, 'html.parser')
-    print(menu_soupgit )
+    print(menu_soup)
 
 
     day_code = day_codes[weekday]
@@ -64,7 +64,7 @@ def scrape_menu(dining_hall : str, weekday: str) -> list:
     return init_menu_list
 
 
-print(scrape_menu("andrews-commons", "Fri"))
+
     
 
 
