@@ -1,0 +1,4 @@
+.venv
+djangoAPI/__pycache__
+djangoAPI/db.sqlite3
+djangoAPI/media
