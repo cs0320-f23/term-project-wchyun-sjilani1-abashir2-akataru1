@@ -20,5 +20,5 @@ from djangoAPI import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/',views.say_hello)
+    path('scrape/<str:dining_hall>/<str:day>',views.scrape)
 ]
