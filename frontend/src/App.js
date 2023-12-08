@@ -2,6 +2,9 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 
+import Home from "./home.js"; 
+import DHall from "./DHall.js"; 
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -43,6 +46,9 @@ function App() {
       <div id="signInDiv"></div>
       {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
       {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}</div> : null} {/* <------ This is how we will handle displaying after login*/}
+
+      <Home/>
+      <DHall/>
     </div>
   );
 }
