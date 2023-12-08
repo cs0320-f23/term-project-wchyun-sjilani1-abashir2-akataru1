@@ -13,6 +13,7 @@ function App() {
     let decoded_user_credentials = jwtDecode(response.credential);
     console.log(decoded_user_credentials);
     //TODO: Need to add persistence of log in using cookies (or add auto sign-in: https://developers.google.com/identity/gsi/web/guides/automatic-sign-in-sign-out)
+    //Link for cookies: https://www.telerik.com/blogs/react-basics-how-to-use-cookies 
 
     //This checks for if the user has a brown.edu email (only brown students should probably be using this)
     if (decoded_user_credentials.email.endsWith("brown.edu")) {
@@ -46,5 +47,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;
