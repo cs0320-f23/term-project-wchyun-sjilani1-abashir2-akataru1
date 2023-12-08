@@ -42,7 +42,10 @@ def scrape_menu(dining_hall : str, weekday: str) -> list:
     #print(menu_soup)
     day_items = menu_soup.find_all(class_="day cell_menu_item", id=lambda x: x and x.endswith(day_code), recursive=True)
     print(day_items)
-    init_menu_list = []
+    breakfast = []
+    lunch = []
+    dinner = []
+    other = []
     menu_dict = {}
     for day_item in day_items:
         #station = row.find(class_="stationname").text
@@ -54,13 +57,28 @@ def scrape_menu(dining_hall : str, weekday: str) -> list:
             menu_dict = {
                 "Menu item": menu_item.find(class_="weelydesc").text,
                 #"Station": station,
-                "Description": menu_item.find(class_="collapsed").text if menu_item.find(class_="collapsed") is not None else "",
-                "Day Part": menu_item.find(class_="daypart-abbr").text
+                "Description": menu_item.find(class_="collapsed").text if menu_item.find(class_="collapsed") is not None else ""
             }
-            
             icons = menu_item.find_all(class_="menu-cor-icon")
             menu_dict["Dietary restictions"] = [d.get('alt') for d in icons]
-            init_menu_list.append(menu_dict)
+            day_part = menu_item.find(class_="daypart-abbr").text
+            if day_part is not None:
+                if (day_part.contains('B')):
+                    breakfast.append(menu_dict)
+                if (day_part.contains('L')):
+                    lunch.append(menu_dict)
+                if (day_part.contains('D')):
+                    dinner.append(menu_dict)
+            else:
+                other.append(menu_dict)
+    
+    init_menu_list = {
+        "Breakfast": breakfast,
+        "Lunch": lunch,
+        "Dinner": dinner,
+        "Other": other
+    }
+            
     return init_menu_list
 
 if __name__ == "main":
