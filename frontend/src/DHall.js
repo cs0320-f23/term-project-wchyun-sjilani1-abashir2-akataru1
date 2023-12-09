@@ -3,50 +3,58 @@ import React, { useState } from "react";
 import "./App.css";
 
 
-const DHall = () => {
+const DHall = ({updateLastClickedButton}) => {
 
+
+  const [selectedHall, setSelectedHall] = useState(null);
+
+  const handleDayClick = (key) => {
+    console.log(`clicked ${key}`);
+    setSelectedHall(key);
+    updateLastClickedButton(key); 
+  };
   
   
-    const handleDayOne = () => {
-      console.log('clicked Sharpe Refectory '); 
-    };
+    // const handleDayOne = () => {
+    //   console.log('clicked Sharpe Refectory '); 
+    // };
   
-    const handleDayTwo = () => {
-      console.log('clicked Andrews Commons'); 
-    };
+    // const handleDayTwo = () => {
+    //   console.log('clicked Andrews Commons'); 
+    // };
 
 
-    const handleDayThree = () => {
-      console.log('Verney-Woolley'); 
-    };
+    // const handleDayThree = () => {
+    //   console.log('Verney-Woolley'); 
+    // };
 
-    const handleDayFour = () => {
-      console.log('Blue Room'); 
-    };
+    // const handleDayFour = () => {
+    //   console.log('Blue Room'); 
+    // };
 
-    const handleDayFive = () => {
-      console.log('Ivy Room'); 
-    };
+    // const handleDayFive = () => {
+    //   console.log('Ivy Room'); 
+    // };
 
-    const handleDaySix = () => {
-      console.log('Gourmet To Go'); 
-    };
+    // const handleDaySix = () => {
+    //   console.log('Gourmet To Go'); 
+    // };
   
-    const handleDaySeven = () => {
-      console.log('Josiahs'); 
-    };
+    // const handleDaySeven = () => {
+    //   console.log('Josiahs'); 
+    // };
     return (
       <Dropdown
      
-      trigger={<button onClick={handleDayOne}>Dining Hall</button>}
+      trigger={<button onClick={handleDayClick}>Dining Hall</button>}
         menu={[
-          <button key ="Monday" onClick={handleDayOne}>Sharpe Refectory</button>,
-          <button key ="Tuesday" onClick={handleDayTwo}>Andrews Commons</button>,
-          <button key = "Wednesday" onClick={handleDayThree}>Verney-Woolley</button>,
-          <button key = "Thursday"onClick={handleDayFour}>Blue Room</button>,
-          <button key = "Friday"onClick={handleDayFive}>Ivy Room</button>,
-          <button key = "Saturday"onClick={handleDaySix}>Gourmet To Go</button>,
-          <button key = "Sunday"onClick={handleDaySeven}>Josiahs</button>,
+          <button key ="sharpe-refectory" onClick={handleDayClick}>Sharpe Refectory</button>,
+          <button key ="andrews-commons" onClick={handleDayClick}>Andrews Commons</button>,
+          <button key = "verney-woolley" onClick={handleDayClick}>Verney-Woolley</button>,
+          <button key = "blue-room"onClick={handleDayClick}>Blue Room</button>,
+          <button key = "ivy-room"onClick={handleDayClick}>Ivy Room</button>,
+          <button key = "gourmet-to-go"onClick={handleDayClick}>Gourmet To Go</button>,
+          <button key = "josiahs"onClick={handleDayClick}>Josiahs</button>,
         ]}
 
       />

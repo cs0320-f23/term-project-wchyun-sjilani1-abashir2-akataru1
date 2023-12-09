@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import "./App.css";
 
 
-const Home = () => {
+const Home = ({updateLastClickedButton}) => {
 
   const [selectedDay, setSelectedDay] = useState(null);
   const handleDayClick = (key) => {
     console.log(`clicked ${key}`);
     setSelectedDay(key);
+    updateLastClickedButton(key); 
   };
 
 
