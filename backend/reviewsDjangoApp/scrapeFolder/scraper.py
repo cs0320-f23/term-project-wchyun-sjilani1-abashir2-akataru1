@@ -23,7 +23,7 @@ def has_row(tag):
     return tag.startswith("row ")
 
 
-def scrape_menu(dining_hall : str, weekday: str) -> list:
+def scrape_menu(dining_hall : str, weekday: str) -> dict:
     #Use BeautifulSoup and requests to collect data required for the assignment.
     req = requests.get(DINING_WEB + dining_hall + "/", verify=False)
     dining_html = req.text
