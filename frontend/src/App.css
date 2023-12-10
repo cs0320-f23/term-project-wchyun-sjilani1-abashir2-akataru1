@@ -5,12 +5,13 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
 }
 
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif; /* Consistent font with the header */
-  background-color: #f4f4f4; /* Light background for contrast with the header */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Consistent font with the header */
+  background-color: #fbfffa; /* Light background for contrast with the header */
   color: #333; /* Dark gray color for general text */
   line-height: 1.6; /* Improve readability */
   font-size: 16px;
@@ -19,6 +20,7 @@ body {
 .main-content {
   padding: 20px;
   border: 1px solid #ccc;
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -36,7 +38,7 @@ body {
   justify-content: center;
   font-size: calc(8px + 1.5vmin);
   color: white;
-  border: 1px solid #ccc;
+  border-bottom: 3px solid #ccc;
 }
 
 
@@ -51,8 +53,12 @@ body {
 
 /* Responsive design: Adjust header for smaller screens */
 @media (max-width: 768px) {
-  header {
-      padding: 15px 5px; 
+  .App-header {
+      padding: 15px;
+      font-size: calc(7px + 2vmin) 
+  }
+  .main-content{
+    padding: 15px;
   }
 
   header h1 {
