@@ -11,17 +11,25 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import config
+import environ
+import os
+import dj_database_url
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#Setting up our environment variables
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wrn_oz^x(c_$3r4tx5e+2mg^_y+v-#2nt-9&n3-p8&bufu12jg'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,7 +41,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
-    'djangoAPI',
+    'reviewsDjangoApp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,13 +87,15 @@ WSGI_APPLICATION = 'djangoAPI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'brown_dining_reviews',
-        'USER': 'postgres',
-        'PASSWORD': config.password,
-        'HOST': 'localhost', 
-        'PORT': '5432',
+        'NAME': 'reviewsdjangoapp_bds_user_reviews',
+        'USER': 'ahadb',
+        'PASSWORD': 'D3RNMhfwSuUlaCTKhToAcDXXMd93Tx4K',
+        'HOST': 'dpg-clr3jd0gqk6s7392ql5g-a', 
+        'PORT': 5432,
     }
 }
+
+DATABASES["default"] = dj_database_url.parse('postgres://ahadb:D3RNMhfwSuUlaCTKhToAcDXXMd93Tx4K@dpg-clr3jd0gqk6s7392ql5g-a.ohio-postgres.render.com/reviewsdjangoapp_bds_user_reviews')
 
 
 # Password validation
