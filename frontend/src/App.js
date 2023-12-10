@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
-import Card from './card.tsx';
+import Card from './card.jsx';
 
 
   //Typescript version
