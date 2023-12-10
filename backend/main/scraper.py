@@ -63,11 +63,11 @@ def scrape_menu(dining_hall : str, weekday: str) -> list:
             menu_dict["Dietary restictions"] = [d.get('alt') for d in icons]
             day_part = menu_item.find(class_="daypart-abbr").text
             if day_part is not None:
-                if (day_part.contains('B')):
+                if ('B' in day_part):
                     breakfast.append(menu_dict)
-                if (day_part.contains('L')):
+                if ('L' in day_part):
                     lunch.append(menu_dict)
-                if (day_part.contains('D')):
+                if ('D' in day_part):
                     dinner.append(menu_dict)
             else:
                 other.append(menu_dict)
