@@ -76,7 +76,7 @@ import Card from './card.tsx';
       </div>
     );
     }
-  }, []);
+  };
 
 
   return (
