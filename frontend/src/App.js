@@ -2,16 +2,7 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 import Card from './card.jsx';
-
-
-  //Typescript version
-  // const App: React.FC = () => {
-  //   return (
-  //     <div>
-  //       <card name="Pizza" description="Good!" rating={5} />
-  //     </div>
-  //   );
-  // };
+import Header from './Header';
 
   function App() {
     const [user, setUser] = useState({});
@@ -52,17 +43,11 @@ import Card from './card.jsx';
         <div id="signInDiv"></div>
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
         {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}
+        <Header />
         <Card name="Chili Con Carne" description="garlic, onions, jalapeno and red peppers, ground beef, kidney beans and ancho chilies with herbs and spices" rating={5} />
         <Card name="Crab And Corn Chowder" description="applewood smoked bacon, rum, cream, onions, potatoes, corn and crab" rating={5} />
 
         </div> : null} {/* <------ This is how we will handle displaying after login*/}
-        {/* <div>
-        <Card name="Chili Con Carne" description="garlic, onions, jalapeno and red peppers, ground beef, kidney beans and ancho chilies with herbs and spices" rating={5} />
-      </div>
-
-      <div>
-        <Card name="Crab And Corn Chowder" description="applewood smoked bacon, rum, cream, onions, potatoes, corn and crab" rating={5} />
-      </div> */}
       </div>
     );
     }
