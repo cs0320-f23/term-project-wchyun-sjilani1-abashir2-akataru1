@@ -31,20 +31,6 @@ import Card from './card.tsx';
       } else {
         setNotBrownStudent(true);
       }
-
-  function loginCallbackResponse(response) {
-    let decoded_user_credentials = jwtDecode(response.credential);
-    console.log(decoded_user_credentials);
-    //TODO: Need to add persistence of log in using cookies (or add auto sign-in: https://developers.google.com/identity/gsi/web/guides/automatic-sign-in-sign-out)
-    //Link for cookies: https://www.telerik.com/blogs/react-basics-how-to-use-cookies 
-
-    //This checks for if the user has a brown.edu email (only brown students should probably be using this)
-    if (decoded_user_credentials.email.endsWith("brown.edu")) {
-      setUser(decoded_user_credentials);
-      setNotBrownStudent(false);
-      document.getElementById("signInDiv").hidden = true;
-    } else {
-      setNotBrownStudent(true);
     }
   
     useEffect(() => {
@@ -76,18 +62,4 @@ import Card from './card.tsx';
       </div>
     );
     }
-  };
-
-
-  return (
-    <div className="App">
-      <div id="signInDiv"></div>
-      {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
-      {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}</div> : null} {/* <------ This is how we will handle displaying after login*/}
-    </div>
-  );
-}
-
-
-
 export default App;
