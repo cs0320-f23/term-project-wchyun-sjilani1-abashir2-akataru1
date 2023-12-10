@@ -51,14 +51,18 @@ import Card from './card.tsx';
       <div className="App">
         <div id="signInDiv"></div>
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
-        {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}</div> : null} {/* <------ This is how we will handle displaying after login*/}
-        <div>
+        {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}
+        <Card name="Chili Con Carne" description="garlic, onions, jalapeno and red peppers, ground beef, kidney beans and ancho chilies with herbs and spices" rating={5} />
+        <Card name="Crab And Corn Chowder" description="applewood smoked bacon, rum, cream, onions, potatoes, corn and crab" rating={5} />
+
+        </div> : null} {/* <------ This is how we will handle displaying after login*/}
+        {/* <div>
         <Card name="Chili Con Carne" description="garlic, onions, jalapeno and red peppers, ground beef, kidney beans and ancho chilies with herbs and spices" rating={5} />
       </div>
 
       <div>
         <Card name="Crab And Corn Chowder" description="applewood smoked bacon, rum, cream, onions, potatoes, corn and crab" rating={5} />
-      </div>
+      </div> */}
       </div>
     );
     }
