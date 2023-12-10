@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import environ
 import os
+import dj_database_url
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -86,13 +87,15 @@ WSGI_APPLICATION = 'djangoAPI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'), 
-        'PORT': env('DATABASE_PORT'),
+        'NAME': 'reviewsdjangoapp_bds_user_reviews',
+        'USER': 'ahadb',
+        'PASSWORD': 'D3RNMhfwSuUlaCTKhToAcDXXMd93Tx4K',
+        'HOST': 'dpg-clr3jd0gqk6s7392ql5g-a', 
+        'PORT': 5432,
     }
 }
+
+DATABASES["default"] = dj_database_url.parse('postgres://ahadb:D3RNMhfwSuUlaCTKhToAcDXXMd93Tx4K@dpg-clr3jd0gqk6s7392ql5g-a.ohio-postgres.render.com/reviewsdjangoapp_bds_user_reviews')
 
 
 # Password validation
