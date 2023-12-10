@@ -2,18 +2,10 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 
-import Home from "./home.js"; 
-import DHall from "./DHall.js"; 
-
 
 function App() {
   const [user, setUser] = useState({});
   const [notBrownStudent, setNotBrownStudent] = useState(false);
-  const [lastClickedButtonHome, setLastClickedButtonHome] = useState('');
-  const [lastClickedButtonDHall, setLastClickedButtonDHall] = useState('');
-  const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
-
- 
 
 
 
@@ -32,20 +24,6 @@ function App() {
     }
   }
 
-  const updateLastClickedButton = (button, component) => { 
-    if (component === 'Home') { 
-      setLastClickedButtonHome(button); 
-    } else if (component === 'DHall') { 
-    setLastClickedButtonDHall (button); }
-  };
-
-  useEffect(() => { 
-    setIsSubmitEnabled(lastClickedButtonHome && lastClickedButtonDHall);
-  }, [lastClickedButtonHome, lastClickedButtonDHall]);
-  
-
-  
-
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
@@ -60,34 +38,11 @@ function App() {
   }, []);
 
 
-  const handleSubmit = () => {
-    if (isSubmitEnabled) {
-
-      if (lastClickedButtonDHall && lastClickedButtonHome) {
-     
-      console.log('Submitting data:', { Home: lastClickedButtonHome, DHall: lastClickedButtonDHall });}
-  
-
-      setLastClickedButtonHome('');
-      setLastClickedButtonDHall('');
-      setIsSubmitEnabled(false);
-    }
-  };
-
-
   return (
     <div className="App">
       <div id="signInDiv"></div>
       {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
       {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}</div> : null} {/* <------ This is how we will handle displaying after login*/}
-
-      <Home updateLastClickedButton={(button) => updateLastClickedButton(button, 'Home')} />
-      <DHall updateLastClickedButton={(button) => updateLastClickedButton(button, 'DHall')} />
-
-      {/* Submit button */}
-      <button onClick={handleSubmit} disabled={!isSubmitEnabled}>
-        Submit
-      </button>
     </div>
   );
 }
