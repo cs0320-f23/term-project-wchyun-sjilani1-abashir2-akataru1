@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 import Card from './card.jsx';
 
-import Header from './Header
+import Header from './Header'
 import Day from './day.js'
 import Dhall from './Dhall.js'
 import Meal from './meal.js'
