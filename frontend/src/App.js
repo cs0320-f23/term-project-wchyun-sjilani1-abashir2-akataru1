@@ -4,9 +4,9 @@ import { jwtDecode } from "jwt-decode";
 import Card from './card.jsx';
 
 import Header from './Header'
-import Day from './day.js'
-import Dhall from './Dhall.js'
-import Meal from './meal.js'
+import Day from './components/Dropdowns/day.js'
+import Dhall from './components/Dropdowns/Dhall.js'
+import Meal from './components/Dropdowns/meal.js'
 // import submitData from './submitData.js'
 
 
