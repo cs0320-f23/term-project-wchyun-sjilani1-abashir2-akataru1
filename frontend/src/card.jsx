@@ -10,7 +10,7 @@ function CardFormat({ name, description, rating }) {
     return (
         <div>
             <div>
-                <h1>Name: {name}</h1>
+                <p className="boldText">Name: {name}</p>
                 <p>Description: {description}</p>
                 <p>Rating: {rating}</p>
             </div>
