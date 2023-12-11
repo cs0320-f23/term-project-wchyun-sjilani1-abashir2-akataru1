@@ -64,7 +64,6 @@ import Meal from './meal.js'
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
         {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}
         <Day></Day>
-     
         <Dhall></Dhall>
         <Meal></Meal>
          

@@ -22,7 +22,7 @@ const Meal = ({onChange}) => {
     const selectedmealOption = event.target.options[event.target.selectedIndex];
     const selectedmealLabel = selectedmealOption.getAttribute("label");
     setContent(`Selected day is ${selectedmealLabel}`);
-    onChange(event.target.value);
+    // onChange(event.target.value);
   };
 
   
@@ -66,13 +66,13 @@ const Meal = ({onChange}) => {
                 placeholder="Select a Meal"
                
               >
-                <option label = "Breakfast" key="Mon" value= "Breakfast" >
+                <option label = "Breakfast" key="bre" value= "Breakfast" >
                 Breakfast
                 </option>
-                <option label = "Lunch" key="Tue" value="Lunch">
+                <option label = "Lunch" key="lun" value="Lunch">
                   Lunch
                 </option>
-                <option label = "Dinner" key="Wed" value="Dinner">
+                <option label = "Dinner" key="din" value="Dinner">
                   Dinner
                 </option>
                
