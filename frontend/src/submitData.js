@@ -13,21 +13,21 @@
 //     const [selectedMeal, setselectedmeal] = useState('');
 
 
-//     const handleDayChange = (day) => {
-//       setselectedDay(day);
+//     const handleDayChange = (Day) => {
+//       setselectedDay(Day);
 //     };
   
-//     const handleDhallChange = (dhall) => {
-//       setselectedDhall(dhall);
+//     const handleDhallChange = (DHall) => {
+//       setselectedDhall(DHall);
 //     };
   
-//     const handleMealChange = (meal) => {
-//       setselectedmeal(meal);
+//     const handleMealChange = (Meal) => {
+//       setselectedmeal(Meal);
 //     };
 
   
 
-
+// const handleSubmit = () => {
 //     if (selectedDay && selectedDhall && selectedMeal) {
 //         setselectedOption === true; 
 //         console.log('Submitting data:', {
@@ -42,6 +42,14 @@
 
 // }
 // }; 
+
+// return ( 
+//   <div> 
+//     <button onClick={handleSubmit}>Submit</button>
+//   </div>
+// ); 
+// }; 
+
 
 
 // export default submitData;

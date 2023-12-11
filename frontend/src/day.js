@@ -24,6 +24,7 @@ const Day = () => {
     setContent(`Selected day is ${selectedDayLabel}`);
   };
 
+
   
   
     // const handleDayOne = () => {
@@ -62,7 +63,7 @@ const Day = () => {
                 key= {selectedDay}
                
                 onChange={handleDayChange}
-                placeholder="Select a weekday"
+                placeholder="Select a Weekday"
                
               >
                 <option label = "Monday" key="Mon" value="Mon" >
@@ -89,6 +90,7 @@ const Day = () => {
               </Select>
 
               <p> {content} </p>
+           
 
               </div>
     )
