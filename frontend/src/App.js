@@ -22,6 +22,9 @@ import Meal from './components/Dropdowns/meal.js'
   function App() {
     const [user, setUser] = useState({});
     const [notBrownStudent, setNotBrownStudent] = useState(false);
+    const [selectedDay, setSelectedDay] = useState('');
+    const [selectedMeal, setSelectedMeal] = useState('');
+    const [selectedDhall, setSelectedDhall] = useState('');
    
   
 
@@ -58,6 +61,31 @@ import Meal from './components/Dropdowns/meal.js'
         {theme: "outline", size: "medium"}
       );
     }, []);
+    const handleDayChange = (day) => {
+      setSelectedDay(day);
+    };
+  
+    const handleDhallChange = (dhall) => {
+      setSelectedDhall(dhall);
+    };
+  
+    const handleMealChange = (meal) => {
+      setSelectedMeal(meal);
+    };
+
+    const handleSubmit = () => {
+      if (selectedDay && selectedMeal && selectedDhall) {
+        console.log('Submitting data:', {
+          Day: selectedDay,
+          Meal: selectedMeal,
+          Dhall: selectedDhall,
+        });
+
+        setSelectedDay('');
+        setSelectedMeal('');
+        setSelectedDhall('');
+      }
+    };
   
   
     return (
@@ -65,17 +93,16 @@ import Meal from './components/Dropdowns/meal.js'
         <div id="signInDiv"></div>
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
         {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}
+        <Day onSelectDay = {handleDayChange} />
+         <Dhall onSelectDhall={handleDhallChange} />
+        <Meal onSelectMeal = {handleMealChange} />
 
-        <Header />
-
-        <Day></Day>
-        <Dhall></Dhall>
-        <Meal></Meal>
+        <button onClick={handleSubmit}>Submit</button>
          
         <Card name="Chili Con Carne" description="garlic, onions, jalapeno and red peppers, ground beef, kidney beans and ancho chilies with herbs and spices" rating={5} />
         <Card name="Crab And Corn Chowder" description="applewood smoked bacon, rum, cream, onions, potatoes, corn and crab" rating={5} />
       
-    
+       
 
 
         </div> : null} {/* <------ This is how we will handle displaying after login*/}

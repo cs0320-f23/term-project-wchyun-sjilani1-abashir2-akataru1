@@ -62,7 +62,7 @@ const DHall = () => {
                 key= {selectedDhall}
                
                 onChange={handleDHallChange}
-                placeholder="Select a dining hall"
+                placeholder="Select a Dining Hall"
                
               >
                 <option label = "Sharpe Refectory" key="Mon" value="sharpe-refectory" >

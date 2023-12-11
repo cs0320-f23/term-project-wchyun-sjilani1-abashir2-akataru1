@@ -21,7 +21,7 @@ const Meal = ({onChange}) => {
     setSelectedmeal(event.target.value);
     const selectedmealOption = event.target.options[event.target.selectedIndex];
     const selectedmealLabel = selectedmealOption.getAttribute("label");
-    setContent(`Selected day is ${selectedmealLabel}`);
+    setContent(`Selected meal is ${selectedmealLabel}`);
     // onChange(event.target.value);
   };
 
