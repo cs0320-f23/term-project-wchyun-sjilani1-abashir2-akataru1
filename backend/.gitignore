@@ -2,4 +2,7 @@
 djangoAPI/__pycache__
 djangoAPI/db.sqlite3
 djangoAPI/media
-djangoAPI/config.py
+djangoAPI/config.env
+djangoAPI/keygen.py
+.env
+*.env

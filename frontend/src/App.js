@@ -2,12 +2,34 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 import Card from './card.jsx';
-import Header from './Header';
+
+import Header from './Header
+import Day from './day.js'
+import Dhall from './Dhall.js'
+import Meal from './meal.js'
+// import submitData from './submitData.js'
+
+
+  //Typescript version
+  // const App: React.FC = () => {
+  //   return (
+  //     <div>
+  //       <card name="Pizza" description="Good!" rating={5} />
+  //     </div>
+  //   );
+ 
 
   function App() {
     const [user, setUser] = useState({});
     const [notBrownStudent, setNotBrownStudent] = useState(false);
+   
+  
 
+    // const handleSubmit = () => {
+    //   submitData();
+    // };
+
+ 
 
     function loginCallbackResponse(response) {
       let decoded_user_credentials = jwtDecode(response.credential);
@@ -43,9 +65,18 @@ import Header from './Header';
         <div id="signInDiv"></div>
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
         {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}
+
         <Header />
+
+        <Day></Day>
+        <Dhall></Dhall>
+        <Meal></Meal>
+         
         <Card name="Chili Con Carne" description="garlic, onions, jalapeno and red peppers, ground beef, kidney beans and ancho chilies with herbs and spices" rating={5} />
         <Card name="Crab And Corn Chowder" description="applewood smoked bacon, rum, cream, onions, potatoes, corn and crab" rating={5} />
+      
+    
+
 
         </div> : null} {/* <------ This is how we will handle displaying after login*/}
       </div>

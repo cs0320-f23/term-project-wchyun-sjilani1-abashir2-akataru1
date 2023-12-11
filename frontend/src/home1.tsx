@@ -14,7 +14,12 @@
 //   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 
  
-
+//   const handleSelectedTypeChange = (
+//     event: React.ChangeEvent<HTMLSelectElement>
+//   ) => {
+//     setSelectedType(event.target.value.toLowerCase() as NodeType);
+//     setContent("");
+//   };
 
 
 //   function loginCallbackResponse(response) {
@@ -93,3 +98,11 @@
 // }
 
 // export default App;
+// function setSelectedType(arg0: NodeType) {
+//   throw new Error('Function not implemented.');
+// }
+
+// function setContent(arg0: string) {
+//   throw new Error('Function not implemented.');
+// }
+
