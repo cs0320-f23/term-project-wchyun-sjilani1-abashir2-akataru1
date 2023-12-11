@@ -1,7 +1,7 @@
-import './App.css';
+import '../styles/App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
-import Card from './card.jsx';
+import Card from './components/MealsReviews/card.jsx';
 
 import Header from './Header'
 import Day from './components/Dropdowns/day.js'
