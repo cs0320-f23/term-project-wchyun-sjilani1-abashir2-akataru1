@@ -5,6 +5,22 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Consistent font with the header */
+  background-color: #e5dbd9; /* Light background for contrast with the header */
+  color: #333; /* Dark gray color for general text */
+  line-height: 1.6; /* Improve readability */
+  font-size: 16px;
+}
+
+.main-content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -20,13 +36,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 1.5vmin);
   color: white;
+  border-bottom: 3px solid #ccc;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -36,3 +50,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* Responsive design: Adjust header for smaller screens */
+@media (max-width: 768px) {
+  .App-header {
+      padding: 15px;
+      font-size: calc(7px + 2vmin) 
+  }
+  .main-content{
+    padding: 15px;
+  }
+
+  header h1 {
+      font-size: 0.5em; 
+  }
+
+  header nav a {
+      margin: 0 10px;
+  }
+
+.boldText{
+  font-weight: bold; 
+}
+}
+
+
