@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import './styles/App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 import Card from './components/MealsReviews/card.jsx';
@@ -7,6 +7,7 @@ import Header from './Header'
 import Day from './components/Dropdowns/day.js'
 import Dhall from './components/Dropdowns/Dhall.js'
 import Meal from './components/Dropdowns/meal.js'
+import Submit from './components/Dropdowns/Inputs.js'
 // import submitData from './submitData.js'
 
 
@@ -22,9 +23,6 @@ import Meal from './components/Dropdowns/meal.js'
   function App() {
     const [user, setUser] = useState({});
     const [notBrownStudent, setNotBrownStudent] = useState(false);
-    const [selectedDay, setSelectedDay] = useState('');
-    const [selectedMeal, setSelectedMeal] = useState('');
-    const [selectedDhall, setSelectedDhall] = useState('');
    
   
 
@@ -61,31 +59,7 @@ import Meal from './components/Dropdowns/meal.js'
         {theme: "outline", size: "medium"}
       );
     }, []);
-    const handleDayChange = (day) => {
-      setSelectedDay(day);
-    };
-  
-    const handleDhallChange = (dhall) => {
-      setSelectedDhall(dhall);
-    };
-  
-    const handleMealChange = (meal) => {
-      setSelectedMeal(meal);
-    };
-
-    const handleSubmit = () => {
-      if (selectedDay && selectedMeal && selectedDhall) {
-        console.log('Submitting data:', {
-          Day: selectedDay,
-          Meal: selectedMeal,
-          Dhall: selectedDhall,
-        });
-
-        setSelectedDay('');
-        setSelectedMeal('');
-        setSelectedDhall('');
-      }
-    };
+    
   
   
     return (
@@ -93,11 +67,8 @@ import Meal from './components/Dropdowns/meal.js'
         <div id="signInDiv"></div>
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
         {Object.keys(user).length>0 ? <div>Hello, you're logged in {user.name}
-        <Day onSelectDay = {handleDayChange} />
-         <Dhall onSelectDhall={handleDhallChange} />
-        <Meal onSelectMeal = {handleMealChange} />
-
-        <button onClick={handleSubmit}>Submit</button>
+        <Header/>
+        <Submit/>
          
         <Card name="Chili Con Carne" description="garlic, onions, jalapeno and red peppers, ground beef, kidney beans and ancho chilies with herbs and spices" rating={5} />
         <Card name="Crab And Corn Chowder" description="applewood smoked bacon, rum, cream, onions, potatoes, corn and crab" rating={5} />

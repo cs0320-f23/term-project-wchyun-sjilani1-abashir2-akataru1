@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Select } from '@chakra-ui/react'
 
-import "./App.css";
+import "../../styles/App.css";
 
 
 const Meal = ({onChange}) => {
