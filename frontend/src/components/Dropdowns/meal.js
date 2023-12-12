@@ -79,7 +79,6 @@ const Meal = (props) => {
                
               </Select>
 
-              <p> {content} </p>
 
               </div>
     )

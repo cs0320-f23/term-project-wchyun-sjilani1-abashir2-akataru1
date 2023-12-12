@@ -8,7 +8,7 @@ function CardFormat({ name, description, rating }) {
     };
 
     return (
-        <div>
+        <div class="card">
             <div>
                 <p className="boldText">Name: {name}</p>
                 <p>Description: {description}</p>

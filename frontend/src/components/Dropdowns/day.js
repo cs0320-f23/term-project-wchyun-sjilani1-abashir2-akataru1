@@ -90,7 +90,6 @@ const Day = (props) => {
                 </option>
               </Select>
 
-              <p> {content} </p>
            
 
               </div>

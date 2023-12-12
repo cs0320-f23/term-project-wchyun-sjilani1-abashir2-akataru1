@@ -80,4 +80,29 @@ body {
 }
 }
 
+.card{
+  background-color: white;
+
+}
+
+.inputs{
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+
+
+}
+button{
+  background-color: white;
+}
+
+.button-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.not-enough{
+  margin-top: 5px; 
+}
 

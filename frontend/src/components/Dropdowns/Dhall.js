@@ -89,7 +89,6 @@ const DHall = (props) => {
                 </option>
               </Select>
 
-              <p> {content} </p>
 
               </div>
     )

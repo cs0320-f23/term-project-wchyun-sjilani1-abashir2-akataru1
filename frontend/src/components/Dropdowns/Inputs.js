@@ -49,9 +49,11 @@ function Submit(props){
         <Day onSelectDay = {handleDayChange} />
         <Dhall onSelectDhall={handleDhallChange} />
         <Meal onSelectMeal = {handleMealChange} />
-
+        <div className="button-container">
         <button onClick={handleSubmit}>Submit</button>
-        {notAllSelected ? <p>Please select an option from all of the dropdown menus above</p> : null}
+        </div>
+        {notAllSelected ? <p class="not-enough">Please select an option from all of the dropdown menus above</p> : null}
+        
 
          
 
