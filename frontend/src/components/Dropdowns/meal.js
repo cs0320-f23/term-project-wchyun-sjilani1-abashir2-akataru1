@@ -4,7 +4,7 @@ import { Select } from '@chakra-ui/react'
 import "../../styles/App.css";
 
 
-const Meal = ({onChange}) => {
+const Meal = (props) => {
 
    const [selectedmeal, setSelectedmeal] = useState("");
   
@@ -19,6 +19,7 @@ const Meal = ({onChange}) => {
   const handleMealChange = (
     event) => {
     setSelectedmeal(event.target.value);
+    props.onSelectMeal(event.target.value);
     const selectedmealOption = event.target.options[event.target.selectedIndex];
     const selectedmealLabel = selectedmealOption.getAttribute("label");
     setContent(`Selected meal is ${selectedmealLabel}`);

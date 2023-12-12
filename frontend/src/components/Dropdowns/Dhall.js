@@ -4,7 +4,7 @@ import { Select } from '@chakra-ui/react'
 import "../../styles/App.css";
 
 
-const DHall = () => {
+const DHall = (props) => {
 
    const [selectedDhall, setSelectedDhall] = useState("");
   
@@ -19,6 +19,7 @@ const DHall = () => {
   const handleDHallChange = (
     event) => {
     setSelectedDhall(event.target.value);
+    props.onSelectDhall(event.target.value);
     const selectedHallOption = event.target.options[event.target.selectedIndex];
     const selectedHallLabel = selectedHallOption.getAttribute("label");
     setContent(`Selected Hall is ${selectedHallLabel}`);

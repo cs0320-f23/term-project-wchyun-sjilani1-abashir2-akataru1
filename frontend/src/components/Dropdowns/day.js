@@ -4,7 +4,7 @@ import { Select } from '@chakra-ui/react'
 import "../../styles/App.css";
 
 
-const Day = () => {
+const Day = (props) => {
 
    const [selectedDay, setSelectedDay] = useState("");
   
@@ -19,6 +19,7 @@ const Day = () => {
   const handleDayChange = (
     event) => {
     setSelectedDay(event.target.value);
+    props.onSelectDay(event.target.value);
     const selectedDayOption = event.target.options[event.target.selectedIndex];
     const selectedDayLabel = selectedDayOption.getAttribute("label");
     setContent(`Selected day is ${selectedDayLabel}`);

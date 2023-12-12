@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100%;
 }
 
 .App-logo {
@@ -39,6 +40,11 @@ body {
   font-size: calc(8px + 1.5vmin);
   color: white;
   border-bottom: 3px solid #ccc;
+}
+
+.loading-div {
+  width: 100%;
+  padding: auto;
 }
 
 
