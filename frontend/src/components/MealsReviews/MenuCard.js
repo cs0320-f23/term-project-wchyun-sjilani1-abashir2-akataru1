@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react';
+import AddReview from './ReviewAdd';
 
 
-function CardFormat({ name, description, rating }) {
+
+function CardFormat({ name, description, rating, user }) {
     const [showReviews, setShowReviews] = useState(false);
     const [reviews, setReviews] = useState([]);
+    const [showInputBar, setShowInputBar] = useState(false);
 
     async function fetchReviews(name) {
         try {
-            const response = await fetch("http://127.0.0.1:8000/scrape/" + name); 
+            const response = await fetch("http://127.0.0.1:8000/get_reviews/" + name); 
             const data = await response.json();
-            return data.reviews;
+            return data;
         } catch (error) {
             console.log('Error fetching reviews:', error);
             throw error;
@@ -34,6 +37,14 @@ function CardFormat({ name, description, rating }) {
         fetchData();
     }, [showReviews, name]);
 
+    const toggleInput = () => {
+        setShowInputBar(!showInputBar)
+    }
+
+    const handleAddReview = (newReview) => {
+        setReviews([...reviews, newReview]);
+    };
+
     return (
         <div class="card">
             <div>
@@ -49,6 +60,10 @@ function CardFormat({ name, description, rating }) {
                         {reviews.map((review, index) => (
                             <p key={index}>{review}</p>
                         ))}
+                        <button onClick={toggleInput}>Add a Review!</button>
+                        {showInputBar && (
+                                <AddReview name={name} user={user} onAddReview={handleAddReview} />
+                            )}
                         </div>
                          )}
             </div>

@@ -1,4 +1,4 @@
-import './styles/App.css';
+import '../styles/App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 import Card from './MealsReviews/MenuCard.js';
@@ -74,7 +74,7 @@ import {TailSpin} from 'react-loader-spinner'
         <Submit setMenu={setMenu} setLoading={setLoading}/>
 
         {menu ? menu.map((item) => (
-          <Card name={item["Menu item"]} description={item["Description"]} rating={5} />)
+          <Card name={item["Menu item"]} description={item["Description"]} rating={5} user={user}/>)
         ) : null}
 
         {loading ? <div className='loading-div'>
