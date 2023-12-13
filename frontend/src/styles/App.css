@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
 }
 
@@ -22,6 +24,13 @@ body {
   padding: 20px;
   border: 1px solid #ccc;
   margin: 0 auto;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .review-div {
@@ -135,7 +144,10 @@ body {
 
 .card{
   background-color: white;
-
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 60%;
+  height: 50vh;
 }
 
 .inputs{

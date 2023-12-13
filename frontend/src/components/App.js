@@ -67,10 +67,13 @@ import {TailSpin} from 'react-loader-spinner'
   
     return (
       <div className="App">
+        <Header/>
         <div id="signInDiv"></div>
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
-        {Object.keys(user).length>0 ? <div>{/*Hello, you're logged in {user.name}*/}
-        <Header/>
+        {Object.keys(user).length>0 ?
+        
+         <div className='main-div'>{/*Hello, you're logged in {user.name}*/}
+        
         <Submit setMenu={setMenu} setLoading={setLoading}/>
 
         {menu ? menu.map((item) => (

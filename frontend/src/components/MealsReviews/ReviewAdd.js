@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 
 function AddReview({ name, user, onAddReview }) {
     const [reviewText, setReviewText] = useState('');
+    const [stars, setStars] = useState(0);
 
     const handleInputChange = (event) => {
         setReviewText(event.target.value);
@@ -12,17 +13,19 @@ function AddReview({ name, user, onAddReview }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        //TODO: Add functionality for adding time
-        try {
-            const response = await fetch("http://127.0.0.1:8000/insert_review/" + user.email + "/" + user.name + "/" + name + "/" + reviewText + "/" + 5 + "/" + "time");
-            const result = await response.json().Result;
-            if(result !== "Success"){
-                console.log("Unable to add");
+        if (stars != 0 && reviewText != '') {
+            //TODO: Add functionality for adding time
+            try {
+                const response = await fetch("http://127.0.0.1:8000/insert_review/" + user.email + "/" + user.name + "/" + name + "/" + reviewText + "/" + stars + "/" + "time");
+                const result = await response.json().Result;
+                if(result !== "Success"){
+                    console.log("Unable to add");
+                }
+                onAddReview(reviewText);
+                setReviewText('');
+            } catch (error) {
+                console.log('Error adding review:', error);
             }
-            onAddReview(reviewText);
-            setReviewText('');
-        } catch (error) {
-            console.log('Error adding review:', error);
         }
     };
     
