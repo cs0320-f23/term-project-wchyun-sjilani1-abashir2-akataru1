@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import AddReview from './ReviewAdd';
+import Review from './Review';
 
 
 
-function CardFormat({ name, description, rating, user }) {
+function CardFormat({ name, description, rating, dietary, user }) {
     const [showReviews, setShowReviews] = useState(false);
     const [reviews, setReviews] = useState([]);
     const [showInputBar, setShowInputBar] = useState(false);
@@ -12,6 +13,7 @@ function CardFormat({ name, description, rating, user }) {
         try {
             const response = await fetch("http://127.0.0.1:8000/get_reviews/" + name); 
             const data = await response.json();
+            console.log(data);
             return data;
         } catch (error) {
             console.log('Error fetching reviews:', error);
@@ -49,6 +51,7 @@ function CardFormat({ name, description, rating, user }) {
         <div class="card">
             <div>
                 <p className="boldText">Name: {name}</p>
+                <p>Dietary Restrictions: {dietary}</p>
                 <p>Description: {description}</p>
                 <p>Rating: {rating}</p>
             </div>
@@ -58,7 +61,7 @@ function CardFormat({ name, description, rating, user }) {
                     <div>
                         <p>Reviews:</p>
                         {reviews.map((review, index) => (
-                            <p key={index}>{review}</p>
+                            <Review reviewObj={review}/>
                         ))}
                         <button onClick={toggleInput}>Add a Review!</button>
                         {showInputBar && (
