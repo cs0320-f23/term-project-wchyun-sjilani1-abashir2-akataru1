@@ -1,13 +1,13 @@
 import './styles/App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
-import Card from './components/MealsReviews/card.jsx';
+import Card from './MealsReviews/MenuCard.js';
 
 import Header from './Header'
-import Day from './components/Dropdowns/day.js'
-import Dhall from './components/Dropdowns/Dhall.js'
-import Meal from './components/Dropdowns/meal.js'
-import Submit from './components/Dropdowns/Inputs.js'
+import Day from './Dropdowns/day.js'
+import Dhall from './Dropdowns/Dhall.js'
+import Meal from './Dropdowns/meal.js'
+import Submit from './Dropdowns/Inputs.js'
 import {TailSpin} from 'react-loader-spinner'
 // import submitData from './submitData.js'
 
