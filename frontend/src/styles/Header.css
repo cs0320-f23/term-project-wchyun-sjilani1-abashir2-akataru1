@@ -1,16 +1,16 @@
 header {
-    background-color: #6a2727; 
-    padding: 20px 10px; 
-    text-align: center;
-    color: #fff; 
+    background-color: #e6e6fa; 
+    padding: 10px 10px; 
+    color: #483d8b; 
     font-family: 'Arial', sans-serif; 
     z-index: 1000; 
+    text-align: center;
 }
 
 /* This is the style for the header title or logo */
 header h1 {
     margin: 0;
-    font-size: 4em;
+    font-size: 2em;
     letter-spacing: 1px; 
 }
 

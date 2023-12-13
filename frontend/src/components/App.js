@@ -76,8 +76,8 @@ import {TailSpin} from 'react-loader-spinner'
         
         <Submit setMenu={setMenu} setLoading={setLoading}/>
 
-        {menu ? menu.map((item) => (
-          <Card name={item["Menu item"]} description={item["Description"]} dietary={item["Dietary restrictions"]} rating={5} user={user}/>)
+        {menu ? menu.map((item) => (<div className='cards'>
+          <Card name={item["Menu item"]} description={item["Description"]} dietary={item["Dietary restrictions"]} rating={5} user={user}/><hr></hr></div>)
         ) : null}
 
         {loading ? <div className='loading-div'>

@@ -14,7 +14,7 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif; /* Consistent font with the header */
-  background-color: #e5dbd9; /* Light background for contrast with the header */
+  background-color:  #483d8b; /* Light background for contrast with the header */
   color: #333; /* Dark gray color for general text */
   line-height: 1.6; /* Improve readability */
   font-size: 16px;
@@ -34,7 +34,7 @@ body {
 }
 
 .review-div {
-  border: 1px solid black;
+  border: 2px solid #967bb6
 }
 
 .hide {
@@ -142,12 +142,18 @@ body {
 }
 }
 
+.boldText{
+  font-weight: bold; 
+}
+.cards{
+  width: 60%;
+}
 .card{
-  background-color: white;
+  background-color: #e6e6fa;
   overflow: scroll;
   overflow-x: hidden;
-  width: 60%;
-  height: 50vh;
+  height: 30vh;
+  border: 3px solid #2e0839;
 }
 
 .inputs{

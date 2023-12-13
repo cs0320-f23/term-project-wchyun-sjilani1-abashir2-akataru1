@@ -47,10 +47,21 @@ function CardFormat({ name, description, rating, dietary, user }) {
         setReviews([...reviews, newReview]);
     };
 
+    function toUpper(str) {
+        return str
+            .toLowerCase()
+            .split(' ')
+            .map(function(word) {
+                return word[0].toUpperCase() + word.substr(1);
+            })
+            .join(' ');
+         }
+
     return (
         <div class="card">
+            
             <div>
-                <p className="boldText">Name: {name}</p>
+                <p className="boldText">{toUpper(name)}</p>
                 <p>Dietary Restrictions: {dietary}</p>
                 <p>Description: {description}</p>
                 <p>Rating: {rating}</p>
