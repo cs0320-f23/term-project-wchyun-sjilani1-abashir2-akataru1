@@ -60,7 +60,13 @@ def scrape_menu(dining_hall : str, weekday: str) -> dict:
                 "Description": menu_item.find(class_="collapsed").text if menu_item.find(class_="collapsed") is not None else ""
             }
             icons = menu_item.find_all(class_="menu-cor-icon")
-            menu_dict["Dietary restictions"] = [d.get('alt') for d in icons]
+            restrict_list = [d.get('alt') for d in icons]
+            restrict_str = ''
+            if(len(restrict_list) is not 0):
+                for diet in restrict_list[:-1]:
+                    restrict_str += diet + ", "
+                restrict_str += restrict_list[-1]
+            menu_dict["Dietary restrictions"] = restrict_str
             day_part = menu_item.find(class_="daypart-abbr").text
             if day_part is not None:
                 if ('B' in day_part):

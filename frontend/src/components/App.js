@@ -1,13 +1,13 @@
-import './styles/App.css';
+import '../styles/App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
-import Card from './components/MealsReviews/card.jsx';
+import Card from './MealsReviews/MenuCard.js';
 
 import Header from './Header'
-import Day from './components/Dropdowns/day.js'
-import Dhall from './components/Dropdowns/Dhall.js'
-import Meal from './components/Dropdowns/meal.js'
-import Submit from './components/Dropdowns/Inputs.js'
+import Day from './Dropdowns/day.js'
+import Dhall from './Dropdowns/Dhall.js'
+import Meal from './Dropdowns/meal.js'
+import Submit from './Dropdowns/Inputs.js'
 import {TailSpin} from 'react-loader-spinner'
 // import submitData from './submitData.js'
 
@@ -67,14 +67,17 @@ import {TailSpin} from 'react-loader-spinner'
   
     return (
       <div className="App">
+        <Header/>
         <div id="signInDiv"></div>
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
-        {Object.keys(user).length>0 ? <div>{/*Hello, you're logged in {user.name}*/}
-        <Header/>
+        {Object.keys(user).length>0 ?
+        
+         <div className='main-div'>{/*Hello, you're logged in {user.name}*/}
+        
         <Submit setMenu={setMenu} setLoading={setLoading}/>
 
-        {menu ? menu.map((item) => (
-          <Card name={item["Menu item"]} description={item["Description"]} rating={5} />)
+        {menu ? menu.map((item) => (<div className='cards'>
+          <Card name={item["Menu item"]} description={item["Description"]} dietary={item["Dietary restrictions"]} rating={5} user={user}/><hr></hr></div>)
         ) : null}
 
         {loading ? <div className='loading-div'>

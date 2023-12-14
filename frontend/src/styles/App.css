@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
 }
 
@@ -12,7 +14,7 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif; /* Consistent font with the header */
-  background-color: #e5dbd9; /* Light background for contrast with the header */
+  background-color:  #483d8b; /* Light background for contrast with the header */
   color: #333; /* Dark gray color for general text */
   line-height: 1.6; /* Improve readability */
   font-size: 16px;
@@ -22,6 +24,66 @@ body {
   padding: 20px;
   border: 1px solid #ccc;
   margin: 0 auto;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-div {
+  border: 2px solid #967bb6
+}
+
+.hide {
+  display: none;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+.add-review-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating {
+    width: 90px;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #000;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -80,9 +142,18 @@ body {
 }
 }
 
+.boldText{
+  font-weight: bold; 
+}
+.cards{
+  width: 60%;
+}
 .card{
-  background-color: white;
-
+  background-color: #e6e6fa;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 30vh;
+  border: 3px solid #2e0839;
 }
 
 .inputs{

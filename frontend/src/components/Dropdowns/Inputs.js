@@ -35,6 +35,7 @@ function Submit(props){
             props.setLoading(true);
             const response = await fetch("http://127.0.0.1:8000/scrape/" + selectedDhall + "/" + selectedDay);
             const myMenu = await response.json();
+            console.log(myMenu[selectedMeal]);
             props.setLoading(false);
             props.setMenu(myMenu[selectedMeal]);
           } catch (error) {
