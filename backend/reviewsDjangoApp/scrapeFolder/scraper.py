@@ -30,7 +30,6 @@ def scrape_menu(dining_hall : str, weekday: str) -> dict:
     dining_soup = BeautifulSoup(dining_html, 'html.parser')
     menu_element = dining_soup.find("a", class_='hidden-small')
     menu_link = menu_element.get('href')
-    print(menu_link)
     req2 = requests.get(menu_link)
     time.sleep(2)
     menu_html = req2.text
@@ -41,7 +40,6 @@ def scrape_menu(dining_hall : str, weekday: str) -> dict:
     day_code = day_codes[weekday]
     #print(menu_soup)
     day_items = menu_soup.find_all(class_="day cell_menu_item", id=lambda x: x and x.endswith(day_code), recursive=True)
-    print(day_items)
     breakfast = []
     lunch = []
     dinner = []
@@ -49,7 +47,6 @@ def scrape_menu(dining_hall : str, weekday: str) -> dict:
     menu_dict = {}
     for day_item in day_items:
         #station = row.find(class_="stationname").text
-        print(day_item)
         menu_items = day_item.find_all(class_="menu-item-description")
         #menu_items = [s.find(class_="menu-item-description") for s in day_items.find_all(class_="menu-item")]
         for menu_item in menu_items:
