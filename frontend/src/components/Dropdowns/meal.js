@@ -10,12 +10,6 @@ const Meal = (props) => {
   
    const [content, setContent] = useState("");
 
-  // const handleDayClick = (key) => {
-  //   console.log(clicked ${key});
-  //   setSelectedDay(key);
-  //   updateLastClickedButton(key); 
-  // };
-
   const handleMealChange = (
     event) => {
     setSelectedmeal(event.target.value);
@@ -27,35 +21,6 @@ const Meal = (props) => {
   };
 
   
-  
-    // const handleDayOne = () => {
-    //   console.log('clicked Monday'); 
-    // };
-  
-    // const handleDayTwo = () => {
-    //   console.log('clicked Tuesday'); 
-    // };
-
-
-    // const handleDayThree = () => {
-    //   console.log('clicked Wednesday'); 
-    // };
-
-    // const handleDayFour = () => {
-    //   console.log('clicked Thursday'); 
-    // };
-
-    // const handleDayFive = () => {
-    //   console.log('clicked Friday'); 
-    // };
-
-    // const handleDaySix = () => {
-    //   console.log('clicked Saturday'); 
-    // };
-  
-    // const handleDaySeven = () => {
-    //   console.log('clicked Sunday'); 
-    // };
     return (
       <div>
 
