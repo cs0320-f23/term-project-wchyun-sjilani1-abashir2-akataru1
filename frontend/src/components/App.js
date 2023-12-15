@@ -2,6 +2,7 @@ import '../styles/App.css';
 import React, {useEffect, useState} from 'react';
 import { jwtDecode } from "jwt-decode";
 import Card from './MealsReviews/MenuCard.js';
+import {useSearchParams} from 'react-router-dom';
 
 import Header from './Header'
 import Day from './Dropdowns/day.js'
@@ -25,8 +26,13 @@ import {TailSpin} from 'react-loader-spinner'
     const [user, setUser] = useState({});
     const [notBrownStudent, setNotBrownStudent] = useState(false);
     const [menu, setMenu] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+    const skipLogin = searchParams.get('skipLogin');
+
+
+    
   
 
     // const handleSubmit = () => {
@@ -51,6 +57,10 @@ import {TailSpin} from 'react-loader-spinner'
     }
   
     useEffect(() => {
+
+      if (skipLogin === 'true' && Object.keys(user).length === 0) {
+        setUser({'name':'Example Person', 'email': 'example@brown.edu'});
+      }
       /* global google */
       google.accounts.id.initialize({
         client_id: '735330380811-di9hrlr84nvs6eomntk5t63hl210nt52.apps.googleusercontent.com',
@@ -61,7 +71,7 @@ import {TailSpin} from 'react-loader-spinner'
         document.getElementById("signInDiv"), 
         {theme: "outline", size: "medium"}
       );
-    }, []);
+    }, [skipLogin]);
 
 
     
