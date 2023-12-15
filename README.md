@@ -90,7 +90,7 @@ the environment variables of the project.
 urls.py - This class also sets the path of scraping, inserting and getting the reviews, and retrieving the average score
 of the ratings. 
 
-#Set Up:
+# Set Up:
 
 Front end:
 
