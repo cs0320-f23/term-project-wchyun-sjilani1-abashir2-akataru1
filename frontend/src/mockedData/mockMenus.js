@@ -44,7 +44,7 @@ const AndrewsOutputs = {
       {'Menu item': 'coffee & espresso', 'Description': "Fair Trade organic coffee, locally roasted by New Harvest Coffee Roasters.  Try one of barista's signature creations, or our freshly brewed drip coffee.", 'Dietary restrictions': ''}], 
       'Dinner': [], 'Other': []}
   
-  const queryOutputs = {
+  const menuOutputs = {
       "blue-room/Wed": BlueRoomOutput,
       "andrews-commons/Thurs" : AndrewsOutputs,
       "shake-shack/Sat": {}, //not a valid dining hall, empty result
@@ -55,4 +55,4 @@ const AndrewsOutputs = {
   
   
   // exporting so we can use these mocked data 
-  export { queryOutputs };
+  export { menuOutputs };
