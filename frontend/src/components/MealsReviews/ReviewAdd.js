@@ -32,7 +32,11 @@ function AddReview({ name, user, onAddReview }) {
                 onAddReview(reviewText);
                 setReviewText('');
                 setStars(0);
-                
+                for (let i=1; i++; i <=5) {
+                    let starElement = document.getElementById("star" + i);
+                    starElement.checked = false;
+                }
+
             } catch (error) {
                 console.log('Error adding review:', error);
             }
