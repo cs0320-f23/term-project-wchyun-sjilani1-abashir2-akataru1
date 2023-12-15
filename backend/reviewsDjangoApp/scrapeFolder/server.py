@@ -1,8 +1,7 @@
 import scraper as sc
 import bs4
 
-print(sc.scrape_menu("andrews-commons", "Thu"))
-myList = sc.scrape_menu("andrews-commons", "Thu")
+myList = sc.scrape_menu("blue-room", "Wed")
 print("BEGIN TODAY'S MENU")
 print("   ")
 print(myList)
