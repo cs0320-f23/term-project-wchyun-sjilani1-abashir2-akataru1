@@ -26,7 +26,7 @@ import {TailSpin} from 'react-loader-spinner'
     const [notBrownStudent, setNotBrownStudent] = useState(false);
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(false)
-   
+
   
 
     // const handleSubmit = () => {
@@ -62,6 +62,8 @@ import {TailSpin} from 'react-loader-spinner'
         {theme: "outline", size: "medium"}
       );
     }, []);
+
+
     
   
   
@@ -77,7 +79,7 @@ import {TailSpin} from 'react-loader-spinner'
         <Submit setMenu={setMenu} setLoading={setLoading}/>
 
         {menu ? menu.map((item) => (<div className='cards'>
-          <Card name={item["Menu item"]} description={item["Description"]} dietary={item["Dietary restrictions"]} rating={5} user={user}/><hr></hr></div>)
+          <Card name={item["Menu item"]} description={item["Description"]} dietary={item["Dietary restrictions"]} rating={item["Rating"]} user={user}/><hr></hr></div>)
         ) : null}
 
         {loading ? <div className='loading-div'>

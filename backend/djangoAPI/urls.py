@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('scrape/<str:dining_hall>/<str:day>',views.scrape),
     path('insert_review/<str:email>/<str:name>/<str:menu_item>/<str:review>/<int:rating>/<str:time>', views.insert_review),
-    path('get_reviews/<str:menu_item>', views.get_reviews)
+    path('get_reviews/<str:menu_item>', views.get_reviews),
+    path('get_avg_score/<str:items>', views.get_avg_score)
 ]

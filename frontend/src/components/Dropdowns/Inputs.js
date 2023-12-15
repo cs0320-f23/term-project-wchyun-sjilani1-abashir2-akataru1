@@ -24,6 +24,16 @@ function Submit(props){
         setSelectedMeal(meal);
       };
 
+      function toUpper(str) {
+        return str
+            .toLowerCase()
+            .split(' ')
+            .map(function(word) {
+                return word[0].toUpperCase() + word.substr(1);
+            })
+            .join(' ');
+         }
+
       const handleSubmit = async () => {
         if (selectedDay === '' || selectedMeal === '' || selectedDhall === '') {
           setNotAllSelected(true);
@@ -36,8 +46,51 @@ function Submit(props){
             const response = await fetch("http://127.0.0.1:8000/scrape/" + selectedDhall + "/" + selectedDay);
             const myMenu = await response.json();
             console.log(myMenu[selectedMeal]);
+            
+
+            let itemString = "";
+
+            console.log(myMenu[selectedMeal].length);
+
+            for (let i=0; i<myMenu[selectedMeal].length; i++ ) {
+              if (i === 0) {
+                itemString += myMenu[selectedMeal][i]['Menu item'];
+              } else {
+                itemString += ',x,' + myMenu[selectedMeal][i]['Menu item'];
+              }
+            }
+
+            console.log(itemString);
+
+            const avgResponse = await fetch("http://127.0.0.1:8000/get_avg_score/" + itemString);
+            const avgResponseJSON = await avgResponse.json();
+
+            console.log(avgResponseJSON);
+
+            let retMenu = [];
+
+            for (let i=0; i<myMenu[selectedMeal].length; i++) {
+              let newMenuObj = myMenu[selectedMeal][i];
+              let menu_item = avgResponseJSON["Average Score"][myMenu[selectedMeal][i]["Menu item"]];
+
+                newMenuObj['Rating'] = Number(avgResponseJSON["Average Score"][myMenu[selectedMeal][i]["Menu item"]]).toFixed(2);
+
+                if (isNaN(newMenuObj['Rating'])) {
+                  newMenuObj['Rating'] = 'No Ratings Yet';
+                }
+              
+              
+              console.log(avgResponseJSON["Average Score"]);
+              retMenu.push(newMenuObj);
+              // myMenu[selectedMeal][i]['Rating'] = avgResponseJSON[myMenu[selectedMeal][i]];
+              // console.log(myMenu[selectedMeal][i]['Rating']);
+            }
+
+            console.log(retMenu);
+
             props.setLoading(false);
-            props.setMenu(myMenu[selectedMeal]);
+            props.setMenu(retMenu);      
+
           } catch (error) {
             console.error("There was an error", error);
           }

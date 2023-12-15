@@ -145,15 +145,26 @@ body {
 .boldText{
   font-weight: bold; 
 }
+
 .cards{
   width: 60%;
 }
+
 .card{
   background-color: #e6e6fa;
   overflow: scroll;
   overflow-x: hidden;
   height: 30vh;
   border: 3px solid #2e0839;
+}
+
+.submit-button {
+  margin-right: auto;
+}
+
+.warning-text {
+  color: red;
+  margin: 0;
 }
 
 .inputs{

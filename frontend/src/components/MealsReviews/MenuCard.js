@@ -44,6 +44,7 @@ function CardFormat({ name, description, rating, dietary, user }) {
     }
 
     const handleAddReview = (newReview) => {
+        console.log(newReview);
         setReviews([...reviews, newReview]);
     };
 
@@ -62,7 +63,7 @@ function CardFormat({ name, description, rating, dietary, user }) {
             
             <div>
                 <p className="boldText">{toUpper(name)}</p>
-                <p>Dietary Restrictions: {dietary}</p>
+                <p>Dietary Restrictions: {dietary && dietary.length ? dietary : "N/A" }</p>
                 <p>Description: {description}</p>
                 <p>Rating: {rating}</p>
             </div>
@@ -75,8 +76,12 @@ function CardFormat({ name, description, rating, dietary, user }) {
                             <Review reviewObj={review}/>
                         ))}
                         <button onClick={toggleInput}>Add a Review!</button>
+                        
                         {showInputBar && (
-                                <AddReview name={name} user={user} onAddReview={handleAddReview} />
+                                <div>
+                                    <hr />
+                                    <AddReview name={name} user={user} onAddReview={handleAddReview} />
+                                </div>
                             )}
                         </div>
                          )}

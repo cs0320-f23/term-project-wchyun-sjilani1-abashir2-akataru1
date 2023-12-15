@@ -10,6 +10,7 @@ import sys
 from .models import bds_user_reviews
 from django.core.serializers import serialize  
 import json
+from django.db.models import Avg
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -61,6 +62,24 @@ def get_reviews(request, menu_item):
     except Exception as e:
         print(str(e))
         return JsonResponse({'Result': str(e)})
+    
+def get_avg_score(request, items: str):
+    
+    item_list = items.split(",x,")
+
+    try:
+        avg_scores = bds_user_reviews.objects.filter(menu_item__in = item_list).values('menu_item').annotate(avg_score=Avg('rating'))
+        avg_scores = list(avg_scores)
+        # avg_score = bds_user_reviews.objects.filter(menu_item = item).aggregate(Avg('rating'))
+        score_dict = {}
+        for score in avg_scores:
+            score_dict[score["menu_item"]] = score["avg_score"]
+
+        return JsonResponse({'Result': 'Success','Average Score': score_dict})
+    except Exception as e:
+        return JsonResponse({'Result': str(e)})
+    
+
 
 
 
