@@ -22,26 +22,30 @@ test("on page load, i see a button", async ({ page }) => {
   });
 
   test('Dropdown Menus Work + Submit', async ({ page }) => {
+    /*
     await page.getByLabel("select-day").click();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-
+    */
+    await page.selectOption('[aria-label="select-day"]', 'Tue');
     await expect(page.getByLabel("select-day")).toContainText("Tuesday");
-
+    /*
     await page.getByLabel("select-dhall").click();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-
+    */
+    await page.selectOption('[aria-label="select-dhall"]', 'blue-room');
     await expect(page.getByLabel("select-dhall")).toContainText("Blue Room");
-
+    /*
     await page.getByLabel("select-meal").click();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-
+    */
+    await page.selectOption('[aria-label="select-meal"]', 'Breakfast');
     await expect(page.getByLabel("select-meal")).toContainText("Breakfast");
   
     await page.getByLabel("Submit").click();
@@ -51,26 +55,33 @@ test("on page load, i see a button", async ({ page }) => {
   });
 
   test('Integration: Blue Room Menu - Tuesday/Blue Room/Breakfast', async ({ page }) => {
+    /*
     await page.getByLabel("select-day").click();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
+    */
+    await page.selectOption('[aria-label="select-day"]', 'Tuesday');
+    
 
     await expect(page.getByLabel("select-day")).toContainText("Tuesday");
-
+/*
     await page.getByLabel("select-dhall").click();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
+*/
+    await page.selectOption('[aria-label="select-dhall"]', 'Blue Room');
 
     await expect(page.getByLabel("select-dhall")).toContainText("Blue Room");
-
+    /*
     await page.getByLabel("select-meal").click();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-
+    */
+    await page.selectOption('[aria-label="select-meal"]', 'Breakfast');
     await expect(page.getByLabel("select-meal")).toContainText("Breakfast");
   
     await page.getByLabel("Submit", { exact: true }).click();
@@ -143,7 +154,7 @@ test("on page load, i see a button", async ({ page }) => {
 
   test('Integration: Ivy Room Menu - Tuesday/Ivy Room/Dinner', async ({ page }) => {
     // test.slow();
-
+    /*
     await page.getByLabel("select-day").click();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
@@ -168,6 +179,11 @@ test("on page load, i see a button", async ({ page }) => {
     await page.keyboard.press('Enter');
 
     await expect(page.getByLabel("select-meal")).toContainText("Dinner");
+    */
+    await page.selectOption('[aria-label="select-day"]', 'Tuesday');
+    await page.selectOption('[aria-label="select-dhall"]', 'Ivy Room');
+    await page.selectOption('[aria-label="select-meal"]', 'Dinner');
+    
   
     await page.getByLabel("Submit", { exact: true }).click();    
 
