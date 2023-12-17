@@ -104,7 +104,7 @@ function Submit(props){
         <Dhall onSelectDhall={handleDhallChange} />
         <Meal onSelectMeal = {handleMealChange} />
         <div className="button-container">
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit} aria-label='Submit'>Submit</button>
         </div>
         {notAllSelected ? <p class="not-enough">Please select an option from all of the dropdown menus above</p> : null}
         

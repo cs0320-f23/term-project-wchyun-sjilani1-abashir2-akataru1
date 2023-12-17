@@ -25,6 +25,7 @@ const Day = (props) => {
       <Select
                 value = {selectedDay}
                 key= {selectedDay}
+                aria-label="select-day"
                
                 onChange={handleDayChange}
                 placeholder="Select a Weekday"
