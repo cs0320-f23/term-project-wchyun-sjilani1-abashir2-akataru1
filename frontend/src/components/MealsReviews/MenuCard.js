@@ -59,7 +59,7 @@ function CardFormat({ name, description, rating, dietary, user }) {
          }
 
     return (
-        <div class="card">
+        <div class="card" aria-label='Menu Card'>
             
             <div>
                 <p className="boldText">{toUpper(name)}</p>
@@ -68,14 +68,14 @@ function CardFormat({ name, description, rating, dietary, user }) {
                 <p>Rating: {rating}</p>
             </div>
             <div>
-                <button onClick={toggleReviews}>See Reviews</button>
+                <button onClick={toggleReviews} aria-label='See Reviews'>See Reviews</button>
                 {showReviews && (
                     <div>
                         <p>Reviews:</p>
                         {reviews.map((review, index) => (
                             <Review reviewObj={review}/>
                         ))}
-                        <button onClick={toggleInput}>Add a Review!</button>
+                        <button onClick={toggleInput} aria-label='Add a Review'>Add a Review!</button>
                         
                         {showInputBar && (
                                 <div>

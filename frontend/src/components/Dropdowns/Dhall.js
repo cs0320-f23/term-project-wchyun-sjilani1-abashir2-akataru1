@@ -64,6 +64,8 @@ const DHall = (props) => {
                
                 onChange={handleDHallChange}
                 placeholder="Select a Dining Hall"
+
+                aria-label="select-dhall"
                
               >
                 <option label = "Sharpe Refectory" key="Mon" value="sharpe-refectory" >

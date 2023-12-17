@@ -65,6 +65,8 @@ const Meal = (props) => {
                
                 onChange={handleMealChange}
                 placeholder="Select a Meal"
+
+                aria-label="select-meal"
                
               >
                 <option label = "Breakfast" key="bre" value= "Breakfast" >

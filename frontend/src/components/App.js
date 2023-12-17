@@ -60,8 +60,10 @@ import {TailSpin} from 'react-loader-spinner'
 
       if (skipLogin === 'true' && Object.keys(user).length === 0) {
         setUser({'name':'Example Person', 'email': 'example@brown.edu'});
+        document.getElementById("signInDiv").hidden = true;
       }
-      /* global google */
+      else {
+        /* global google */
       google.accounts.id.initialize({
         client_id: '735330380811-di9hrlr84nvs6eomntk5t63hl210nt52.apps.googleusercontent.com',
         callback: loginCallbackResponse
@@ -71,6 +73,8 @@ import {TailSpin} from 'react-loader-spinner'
         document.getElementById("signInDiv"), 
         {theme: "outline", size: "medium"}
       );
+      }
+      
     }, [skipLogin]);
 
 
@@ -97,6 +101,7 @@ import {TailSpin} from 'react-loader-spinner'
               <br />
               <TailSpin
                 color="#000000" 
+                ariaLabel='Spinner'
               />
             </div> : null}
       

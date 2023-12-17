@@ -18,7 +18,7 @@ function AddReview({ name, user, onAddReview }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (stars != 0 && reviewText != '') {
+        if (stars !== 0 && reviewText !== '') {
             //TODO: Add functionality for adding time
             try {
                 const date = new Date();
@@ -50,16 +50,16 @@ function AddReview({ name, user, onAddReview }) {
         <form onSubmit={handleSubmit} className="add-review-form">
             <div className='review-input'>
             <div className="rating">
-                    <input id="star5" name="star" type="radio" value="5" className="radio-btn hide" onChange={handleStarsChange} />
-                    <label htmlFor="star5" >☆</label>
-                    <input id="star4" name="star" type="radio" value="4" className="radio-btn hide" onChange={handleStarsChange}/>
-                    <label htmlFor="star4" >☆</label>
-                    <input id="star3" name="star" type="radio" value="3" className="radio-btn hide" onChange={handleStarsChange}/>
-                    <label htmlFor="star3" >☆</label>
-                    <input id="star2" name="star" type="radio" value="2" className="radio-btn hide" onChange={handleStarsChange}/>
-                    <label htmlFor="star2" >☆</label>
+                    <input  id="star5" name="star" type="radio" value="5" className="radio-btn hide" onChange={handleStarsChange} />
+                    <label htmlFor="star5" aria-label='star-rating-5'>☆</label>
+                    <input  id="star4" name="star" type="radio" value="4" className="radio-btn hide" onChange={handleStarsChange}/>
+                    <label htmlFor="star4" aria-label='star-rating-4'>☆</label>
+                    <input  id="star3" name="star" type="radio" value="3" className="radio-btn hide" onChange={handleStarsChange}/>
+                    <label htmlFor="star3" aria-label='star-rating-3'>☆</label>
+                    <input  id="star2" name="star" type="radio" value="2" className="radio-btn hide" onChange={handleStarsChange}/>
+                    <label htmlFor="star2" aria-label='star-rating-2'>☆</label>
                     <input id="star1" name="star" type="radio" value="1" className="radio-btn hide" onChange={handleStarsChange}/>
-                    <label htmlFor="star1" >☆</label>
+                    <label htmlFor="star1" aria-label="star-rating-1">☆</label>
                     <div className="clear"></div>
                 </div>
                 <input
@@ -67,12 +67,13 @@ function AddReview({ name, user, onAddReview }) {
                     value={reviewText}
                     onChange={handleInputChange}
                     placeholder="Add your review..."
+                    aria-label="Add your review"
                 />
                 
             </div>
             {!validReview ? <p className='warning-text'>Please rate and write something before submitting</p> : null}
             <br />
-            <button type="submit" className="submit-button">Submit Review</button>
+            <button type="submit" className="submit-button" aria-label='review submit'>Submit Review</button>
         </form>
     );
 }
