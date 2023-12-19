@@ -10,16 +10,6 @@ import Dhall from './Dropdowns/Dhall.js'
 import Meal from './Dropdowns/meal.js'
 import Submit from './Dropdowns/Inputs.js'
 import {TailSpin} from 'react-loader-spinner'
-// import submitData from './submitData.js'
-
-
-  //Typescript version
-  // const App: React.FC = () => {
-  //   return (
-  //     <div>
-  //       <card name="Pizza" description="Good!" rating={5} />
-  //     </div>
-  //   );
  
 
   function App() {
@@ -31,21 +21,10 @@ import {TailSpin} from 'react-loader-spinner'
     const [searchParams, setSearchParams] = useSearchParams();
     const skipLogin = searchParams.get('skipLogin');
 
-
     
-  
-
-    // const handleSubmit = () => {
-    //   submitData();
-    // };
-
- 
-
     function loginCallbackResponse(response) {
       let decoded_user_credentials = jwtDecode(response.credential);
-      console.log(decoded_user_credentials);
-      //TODO: Need to add persistence of log in using cookies (or add auto sign-in: https://developers.google.com/identity/gsi/web/guides/automatic-sign-in-sign-out)
-  
+      console.log(decoded_user_credentials);  
       //This checks for if the user has a brown.edu email (only brown students should probably be using this)
       if (decoded_user_credentials.email.endsWith("brown.edu")) {
         setUser(decoded_user_credentials);
@@ -57,7 +36,6 @@ import {TailSpin} from 'react-loader-spinner'
     }
   
     useEffect(() => {
-
       if (skipLogin === 'true' && Object.keys(user).length === 0) {
         setUser({'name':'Example Person', 'email': 'example@brown.edu'});
         document.getElementById("signInDiv").hidden = true;
@@ -76,10 +54,6 @@ import {TailSpin} from 'react-loader-spinner'
       }
       
     }, [skipLogin]);
-
-
-    
-  
   
     return (
       <div className="App">
@@ -88,7 +62,7 @@ import {TailSpin} from 'react-loader-spinner'
         {notBrownStudent ? <p>Please sign in with your ".brown.edu" email</p> : null} {/* Displays this message if a non-brown email signs in */}
         {Object.keys(user).length>0 ?
         
-         <div className='main-div'>{/*Hello, you're logged in {user.name}*/}
+         <div className='main-div'>
         
         <Submit setMenu={setMenu} setLoading={setLoading}/>
 
@@ -104,9 +78,6 @@ import {TailSpin} from 'react-loader-spinner'
                 ariaLabel='Spinner'
               />
             </div> : null}
-      
-       
-
 
         </div> : null} {/* <------ This is how we will handle displaying after login*/}
       </div>

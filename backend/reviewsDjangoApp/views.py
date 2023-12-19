@@ -18,37 +18,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 
-
+"""This is the API handler that calls the backend scrape method"""
 def scrape(request, dining_hall, day):
-    # new_dict = {}
-    # response_list = scrape_menu(dining_hall, day)
-    # for i in range(len(response_list)):
-    #     new_dict[i] = response_list[i]
-
     return JsonResponse(scrape_menu(dining_hall, day))
-    # return JsonResponse({"number": id})
 
+"""Inserts the review with the given information into the dataset"""
 def insert_review(request, email, name, menu_item, review, rating, time):
     try: 
-        # conn = psycopg2.connect(host=env("DATABASE_HOST"), 
-        #                             dbname=env("DATABASE_NAME"), 
-        #                             user=env("DATABASE_USER"), 
-        #                             password=env("DATABASE_PASSWORD"), 
-        #                             port=env("DATABASE_PORT"))
-        # cur = conn.cursor()
-        # # query = f"""INSERT INTO {env("REVIEWS_TABLE_NAME")} VALUES ({email}, {name}, {menu_item}, {review}, {rating}, {time});"""
-        # query = f"""INSERT INTO reviewsdjangoapp_bds_user_reviews (email, name, review, rating, time, menu_item) VALUES (%s, %s, %s, %s, %s, %s);"""
-        # data = (str(email), str(name), str(review), int(rating), str(time), str(menu_item))
-        # cur.execute(query, data)
         bds_user_reviews.objects.create(email=email, name=name, menu_item=menu_item, review=review, rating=rating, time=time)
         return JsonResponse({'Result': 'Success'})
     except Exception as e :
         print(str(e))
         return JsonResponse({'Result': str(e)})
 
-
-    
-
+"""Gets all of the reviews for the associated menu item passed in as a parameter"""
 def get_reviews(request, menu_item):
     try:
         b = bds_user_reviews.objects.filter(menu_item = menu_item)
@@ -57,12 +40,12 @@ def get_reviews(request, menu_item):
         ret_list = []
         for i in range(len(b)):
             ret_list.append(b[i]['fields'])
-        # print(b[0]['fields'])
         return JsonResponse(ret_list, safe=False)
     except Exception as e:
         print(str(e))
         return JsonResponse({'Result': str(e)})
     
+"""Gets all of the average scores for the passed in items in the API endpoint"""
 def get_avg_score(request, items: str):
     
     item_list = items.split(",x,")
@@ -70,7 +53,6 @@ def get_avg_score(request, items: str):
     try:
         avg_scores = bds_user_reviews.objects.filter(menu_item__in = item_list).values('menu_item').annotate(avg_score=Avg('rating'))
         avg_scores = list(avg_scores)
-        # avg_score = bds_user_reviews.objects.filter(menu_item = item).aggregate(Avg('rating'))
         score_dict = {}
         for score in avg_scores:
             score_dict[score["menu_item"]] = score["avg_score"]

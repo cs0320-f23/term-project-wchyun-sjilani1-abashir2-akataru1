@@ -16,35 +16,18 @@ test.beforeEach(async ({ page }) => {
 //   });
 
 test("on page load, i see a button", async ({ page }) => {
-    // await page.goto("http://localhost:3000/?skipLogin=true");
-    // await page.getByLabel("Submit");
+
     await expect(page.getByLabel("Submit")).toBeVisible();
   });
 
   test('Dropdown Menus Work + Submit', async ({ page }) => {
-    /*
-    await page.getByLabel("select-day").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    */
+    
     await page.selectOption('[aria-label="select-day"]', 'Tue');
     await expect(page.getByLabel("select-day")).toContainText("Tuesday");
-    /*
-    await page.getByLabel("select-dhall").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    */
+    
     await page.selectOption('[aria-label="select-dhall"]', 'blue-room');
     await expect(page.getByLabel("select-dhall")).toContainText("Blue Room");
-    /*
-    await page.getByLabel("select-meal").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    */
+    
     await page.selectOption('[aria-label="select-meal"]', 'Breakfast');
     await expect(page.getByLabel("select-meal")).toContainText("Breakfast");
   
@@ -55,32 +38,16 @@ test("on page load, i see a button", async ({ page }) => {
   });
 
   test('Integration: Blue Room Menu - Tuesday/Blue Room/Breakfast', async ({ page }) => {
-    /*
-    await page.getByLabel("select-day").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    */
+  
     await page.selectOption('[aria-label="select-day"]', 'Tuesday');
     
 
     await expect(page.getByLabel("select-day")).toContainText("Tuesday");
-/*
-    await page.getByLabel("select-dhall").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-*/
+
     await page.selectOption('[aria-label="select-dhall"]', 'Blue Room');
 
     await expect(page.getByLabel("select-dhall")).toContainText("Blue Room");
-    /*
-    await page.getByLabel("select-meal").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    */
+    
     await page.selectOption('[aria-label="select-meal"]', 'Breakfast');
     await expect(page.getByLabel("select-meal")).toContainText("Breakfast");
   
@@ -153,33 +120,7 @@ test("on page load, i see a button", async ({ page }) => {
 
 
   test('Integration: Ivy Room Menu - Tuesday/Ivy Room/Dinner', async ({ page }) => {
-    // test.slow();
-    /*
-    await page.getByLabel("select-day").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-
-    await expect(page.getByLabel("select-day")).toContainText("Tuesday");
-
-    await page.getByLabel("select-dhall").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-
-    await expect(page.getByLabel("select-dhall")).toContainText("Ivy Room");
-
-    await page.getByLabel("select-meal").click();
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-
-    await expect(page.getByLabel("select-meal")).toContainText("Dinner");
-    */
+   
     await page.selectOption('[aria-label="select-day"]', 'Tuesday');
     await page.selectOption('[aria-label="select-dhall"]', 'Ivy Room');
     await page.selectOption('[aria-label="select-meal"]', 'Dinner');

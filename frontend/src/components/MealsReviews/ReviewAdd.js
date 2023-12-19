@@ -19,7 +19,6 @@ function AddReview({ name, user, onAddReview }) {
         event.preventDefault();
 
         if (stars !== 0 && reviewText !== '') {
-            //TODO: Add functionality for adding time
             try {
                 const date = new Date();
                 const reviewDate = date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear();

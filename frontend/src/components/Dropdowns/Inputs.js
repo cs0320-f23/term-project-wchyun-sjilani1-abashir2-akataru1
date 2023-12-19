@@ -10,7 +10,6 @@ function Submit(props){
     const [selectedMeal, setSelectedMeal] = useState('');
     const [selectedDhall, setSelectedDhall] = useState('');
     const [notAllSelected, setNotAllSelected] = useState(false);
-    // const [menu, setMenu] = useState([]);
 
     const handleDayChange = (day) => {
         setSelectedDay(day);
@@ -82,8 +81,6 @@ function Submit(props){
               
               console.log(avgResponseJSON["Average Score"]);
               retMenu.push(newMenuObj);
-              // myMenu[selectedMeal][i]['Rating'] = avgResponseJSON[myMenu[selectedMeal][i]];
-              // console.log(myMenu[selectedMeal][i]['Rating']);
             }
 
             console.log(retMenu);
